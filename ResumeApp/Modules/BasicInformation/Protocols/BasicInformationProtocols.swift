@@ -21,6 +21,7 @@ protocol BasicInformationPresenterProtocol: class {
     var interactor: BasicInformationInteractorInputProtocol? { get set }
     var wireFrame: BasicInformationWireFrameProtocol? { get set }
     
+    func getTitleForNavigationBar() -> String?
     func determineNumberOfSections() -> Int
     func determineNumberOfItemsInSection(with section: Int) -> Int
     func determineCellForItemAt(with indexPath: IndexPath) -> String
@@ -41,6 +42,7 @@ protocol BasicInformationInteractorInputProtocol: class {
     var presenter: BasicInformationInteractorOutputProtocol? { get set }
     var internalDataManager: BasicInformationInternalDataManagerInputProtocol { get set }
     
+    func getTitleForNavigationBar() -> String?
     func dictateNumberOfSections() -> Int
     func dictateNumberOfItemsInSection(with section: Int) -> Int
     func dictateValuesForProfessionalInfo() -> BasicInformationStructs.Summary
@@ -68,5 +70,5 @@ protocol BasicInformationInternalDataManagerOutputProtocol: class {
 
 //PRESENTER -> WIREFRAME
 protocol BasicInformationWireFrameProtocol: class {
-    static func createBasicInformationModule(moduleTitle: String, context: NSManagedObjectContext) -> UIViewController
+    static func createBasicInformationModule(context: NSManagedObjectContext) -> UIViewController
 }

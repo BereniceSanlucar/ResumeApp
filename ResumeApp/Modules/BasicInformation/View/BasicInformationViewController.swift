@@ -17,6 +17,7 @@ class BasicInformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBasicInfoCollectionView()
+        setNavigationBarTitle()
     }
     
     private func configureBasicInfoCollectionView() {
@@ -27,6 +28,9 @@ class BasicInformationViewController: UIViewController {
         basicInfoCollectionView.register(UINib(nibName: ResumeAppCommonConstants.XibIdentifiers.languagesXib, bundle: nil), forCellWithReuseIdentifier: LanguagesCollectionViewCell.identifier)
     }
     
+    private func setNavigationBarTitle() {
+        self.navigationController?.navigationBar.topItem?.title = presenter?.getTitleForNavigationBar()?.uppercased()
+    }
 }
 
 extension BasicInformationViewController: UICollectionViewDataSource {

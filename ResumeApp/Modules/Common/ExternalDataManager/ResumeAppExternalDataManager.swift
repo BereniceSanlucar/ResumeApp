@@ -20,7 +20,7 @@ class ResumeAppExternalDataManager {
         
     }
     
-    func getDataFromExternalSource(completion: @escaping (String) -> Void?) {
+    func getDataFromExternalSource() {
         let components : (String, String, [String:String]?) = (host: ResumeAppCommonConstants.URLComponents.host, path: ResumeAppCommonConstants.URLComponents.path, queries: nil)
         
         guard let URL = getURL(requestComponents: components) else {
@@ -47,10 +47,6 @@ class ResumeAppExternalDataManager {
             } catch {
                 fatalError(ResumeAppCommonConstants.ExternalManagerIdentifiers.parsingError)
             }
-            
-            DispatchQueue.main.async(execute: {
-                completion(self.personName)
-            })
         }
         
         task.resume()

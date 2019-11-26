@@ -93,6 +93,10 @@ class BasicInformationInteractor: BasicInformationInteractorInputProtocol {
         return try? Data(contentsOf: url)
     }
     
+    func getTitleForNavigationBar() -> String? {
+        return person?.name
+    }
+    
     func dictateNumberOfSections() -> Int {
         return content?.count ?? 0
     }

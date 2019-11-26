@@ -15,6 +15,10 @@ class BasicInformationPresenter: BasicInformationPresenterProtocol {
     var interactor: BasicInformationInteractorInputProtocol?
     var wireFrame: BasicInformationWireFrameProtocol?
     
+    func getTitleForNavigationBar() -> String? {
+        return interactor?.getTitleForNavigationBar()
+    }
+    
     func determineNumberOfSections() -> Int {
         return interactor?.dictateNumberOfSections() ?? 0
     }

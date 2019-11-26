@@ -11,7 +11,7 @@ import CoreData
 
 class BasicInformationWireFrame: BasicInformationWireFrameProtocol {
     
-    static func createBasicInformationModule(moduleTitle: String, context: NSManagedObjectContext) -> UIViewController {
+    static func createBasicInformationModule(context: NSManagedObjectContext) -> UIViewController {
         let storyboard = UIStoryboard(name: ResumeAppCommonConstants.StoryboardIdentifiers.basicInfoModule, bundle: nil)
         let basicInfoVC = storyboard.instantiateViewController(withIdentifier: ResumeAppCommonConstants.ViewControllerIdentifiers.basicInfoController)
         if let view = basicInfoVC as? BasicInformationViewController {
@@ -21,7 +21,6 @@ class BasicInformationWireFrame: BasicInformationWireFrameProtocol {
             setVIPERProperties(for: view, context: context)
             let navController = UINavigationController(rootViewController: view)
             navController.setNavigationBarHidden(false, animated: false)
-            navController.navigationBar.topItem?.title = moduleTitle.uppercased()
             return navController
         }
         return UIViewController()

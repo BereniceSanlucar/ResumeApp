@@ -16,15 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let internalDataManager = ResumeAppInternalDataManager(modelName: ResumeAppCommonConstants.InternalManagerIdentifiers.resumeModel)
 
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+//        ResumeAppExternalDataManager.shared.getDataFromExternalSource { name in
+//            self.name = name
+//        }
+        return true
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        DispatchQueue.global(qos: .userInteractive).async {
-            self.internalDataManager.load()
-            ResumeAppExternalDataManager.shared.context = self.internalDataManager.viewContext
-            ResumeAppExternalDataManager.shared.getDataFromExternalSource { name in
-                self.createHomeVC(personName: name, context: self.internalDataManager.viewContext)
-            }
-        }
+        self.internalDataManager.load()
+        ResumeAppExternalDataManager.shared.context = self.internalDataManager.viewContext
+        ResumeAppExternalDataManager.shared.getDataFromExternalSource()
+        self.createHomeVC(context: self.internalDataManager.viewContext)
         return true
     }
 
@@ -53,8 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     
-    private func createHomeVC(personName: String, context: NSManagedObjectContext) {
-        let viewControllers = [BasicInformationWireFrame.createBasicInformationModule(moduleTitle: personName, context: context),
+    private func createHomeVC(context: NSManagedObjectContext) {
+        let viewControllers = [BasicInformationWireFrame.createBasicInformationModule(context: context),
                                WorkInformationWireFrame.createWorkInformationModule(context: context),
                                ContactInformationWireFrame.createContactInformationModule(context: context)]
         let homeVC = TabBarModuleWireFrame.createTabBarModule(tabBarViewControllers: viewControllers)
