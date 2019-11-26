@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderRV" id="puW-Wf-8uo" customClass="HeaderCollectionReusableView" customModule="ResumeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sed-Hm-eaL">
+                    <rect key="frame" x="8" y="15" width="359" height="20.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="sed-Hm-eaL" firstAttribute="leading" secondItem="puW-Wf-8uo" secondAttribute="leading" constant="8" id="0c4-7l-kur"/>
+                <constraint firstItem="sed-Hm-eaL" firstAttribute="centerY" secondItem="puW-Wf-8uo" secondAttribute="centerY" id="qek-jp-4ZY"/>
+                <constraint firstAttribute="trailing" secondItem="sed-Hm-eaL" secondAttribute="trailing" constant="8" id="szu-7P-w4y"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="CeC-dN-Dek"/>
+            <connections>
+                <outlet property="titleLabel" destination="sed-Hm-eaL" id="TFi-gA-gsq"/>
+            </connections>
+            <point key="canvasLocation" x="-148" y="28"/>
+        </collectionReusableView>
+    </objects>
+</document>

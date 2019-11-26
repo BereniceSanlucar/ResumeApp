@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Company" representedClassName=".Company" syncable="YES">
+        <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="company" inverseEntity="Job" syncable="YES"/>
+    </entity>
+    <entity name="ContactInformation" representedClassName=".ContactInformation" syncable="YES">
+        <attribute name="linkedIn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="contactMeans" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Job" representedClassName=".Job" syncable="YES">
+        <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Company" inverseName="jobs" inverseEntity="Company" syncable="YES"/>
+        <relationship name="worker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="jobs" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Language" representedClassName=".Language" syncable="YES">
+        <attribute name="english" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="french" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="spanish" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="speaker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="languages" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName=".Person" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="professionalsummary" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contactMeans" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ContactInformation" inverseName="owner" inverseEntity="ContactInformation" syncable="YES"/>
+        <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Job" inverseName="worker" inverseEntity="Job" syncable="YES"/>
+        <relationship name="languages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Language" inverseName="speaker" inverseEntity="Language" syncable="YES"/>
+        <relationship name="programmingLanguages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ProgrammingLanguage" inverseName="programmer" inverseEntity="ProgrammingLanguage" syncable="YES"/>
+    </entity>
+    <entity name="ProgrammingLanguage" representedClassName=".ProgrammingLanguage" syncable="YES">
+        <attribute name="kotlin" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="swift" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="programmer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="programmingLanguages" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Company" positionX="-182.5546875" positionY="268.35546875" width="128" height="88"/>
+        <element name="ContactInformation" positionX="18" positionY="63" width="128" height="103"/>
+        <element name="Job" positionX="-187.0390625" positionY="70.5" width="128" height="118"/>
+        <element name="Language" positionX="-51.578125" positionY="-332.09765625" width="128" height="103"/>
+        <element name="Person" positionX="-85.1015625" positionY="-175.21875" width="178.79296875" height="148"/>
+        <element name="ProgrammingLanguage" positionX="196.19140625" positionY="-92.640625" width="191.8125" height="88"/>
+    </elements>
+</model>
